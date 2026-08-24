@@ -3,7 +3,7 @@ const router = express.Router();
 const { listKeys, createKey, toggleKey, deleteKey } = require('../controllers/apiKeyController');
 const authJwt = require('../middleware/authJwt');
 
-router.use(authJwt); // semua endpoint di sini wajib login JWT
+router.use(authJwt); 
 
 router.get('/', listKeys);
 router.post('/', createKey);

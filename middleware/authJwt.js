@@ -1,9 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-/**
- * Melindungi endpoint dashboard (kelola API key, profil, dsb).
- * Membaca token dari header: Authorization: Bearer <token>
- */
 function authJwt(req, res, next) {
   const authHeader = req.headers['authorization'];
 

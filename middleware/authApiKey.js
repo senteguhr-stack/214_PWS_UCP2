@@ -1,10 +1,5 @@
 const { ApiKey } = require('../models');
 
-/**
- * Melindungi endpoint data (produk utama SaaS ini).
- * Membaca API key dari header: x-api-key
- * Setiap request yang berhasil akan menaikkan request_count (untuk usage tracking).
- */
 async function authApiKey(req, res, next) {
   const apiKey = req.headers['x-api-key'];
 
@@ -26,7 +21,6 @@ async function authApiKey(req, res, next) {
       return res.status(403).json({ success: false, message: 'API key sudah dinonaktifkan.' });
     }
 
-    // Usage tracking sederhana
     keyRecord.requestCount += 1;
     keyRecord.lastUsedAt = new Date();
     await keyRecord.save();

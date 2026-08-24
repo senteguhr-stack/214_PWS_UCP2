@@ -1,7 +1,6 @@
 const { ApiKey } = require('../models');
 const generateApiKey = require('../utils/generateApiKey');
 
-// GET /api/keys
 async function listKeys(req, res, next) {
   try {
     const keys = await ApiKey.findAll({
@@ -14,7 +13,6 @@ async function listKeys(req, res, next) {
   }
 }
 
-// POST /api/keys
 async function createKey(req, res, next) {
   try {
     const { label } = req.body;
@@ -29,7 +27,6 @@ async function createKey(req, res, next) {
   }
 }
 
-// PATCH /api/keys/:id/toggle
 async function toggleKey(req, res, next) {
   try {
     const key = await ApiKey.findOne({ where: { id: req.params.id, userId: req.user.id } });
@@ -43,7 +40,6 @@ async function toggleKey(req, res, next) {
   }
 }
 
-// DELETE /api/keys/:id
 async function deleteKey(req, res, next) {
   try {
     const key = await ApiKey.findOne({ where: { id: req.params.id, userId: req.user.id } });

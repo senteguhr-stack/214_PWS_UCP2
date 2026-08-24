@@ -1,7 +1,6 @@
 const { WeatherRecord, City, sequelize } = require('../models');
 const { Op } = require('sequelize');
 
-// GET /api/v1/weather?city_id=&date_from=&date_to=&condition=&page=&limit=
 async function listWeather(req, res, next) {
   try {
     const { city_id, date_from, date_to, condition } = req.query;
@@ -36,7 +35,6 @@ async function listWeather(req, res, next) {
   }
 }
 
-// GET /api/v1/weather/:id
 async function getWeather(req, res, next) {
   try {
     const record = await WeatherRecord.findByPk(req.params.id, {
@@ -49,8 +47,6 @@ async function getWeather(req, res, next) {
   }
 }
 
-// GET /api/v1/weather/stats/:cityId
-// Menunjukkan kompleksitas data: agregasi rata-rata suhu, curah hujan, dsb per kota
 async function getCityStats(req, res, next) {
   try {
     const cityId = req.params.cityId;

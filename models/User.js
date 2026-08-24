@@ -21,7 +21,7 @@ const User = sequelize.define(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false, // disimpan dalam bentuk hash (bcrypt)
+      allowNull: false, 
     },
     plan: {
       type: DataTypes.ENUM('free', 'pro', 'business'),

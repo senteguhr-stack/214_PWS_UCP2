@@ -3,7 +3,7 @@ const { User, ApiKey } = require('../models');
 const { generateToken } = require('../utils/jwt');
 const generateApiKey = require('../utils/generateApiKey');
 
-// POST /api/auth/register
+
 async function register(req, res, next) {
   try {
     const { name, email, password } = req.body;
@@ -29,7 +29,7 @@ async function register(req, res, next) {
     const hashed = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hashed });
 
-    // Setiap user baru otomatis dapat 1 API key default
+   
     const apiKey = await ApiKey.create({
       userId: user.id,
       key: generateApiKey(),
@@ -52,7 +52,6 @@ async function register(req, res, next) {
   }
 }
 
-// POST /api/auth/login
 async function login(req, res, next) {
   try {
     const { email, password } = req.body;
@@ -86,7 +85,6 @@ async function login(req, res, next) {
   }
 }
 
-// GET /api/auth/me (JWT protected)
 async function me(req, res, next) {
   try {
     const user = await User.findByPk(req.user.id, {

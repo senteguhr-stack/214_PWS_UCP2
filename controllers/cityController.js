@@ -1,7 +1,6 @@
 const { City } = require('../models');
 const { Op } = require('sequelize');
 
-// GET /api/v1/cities?province=&search=&page=&limit=
 async function listCities(req, res, next) {
   try {
     const { province, search } = req.query;
@@ -30,7 +29,6 @@ async function listCities(req, res, next) {
   }
 }
 
-// GET /api/v1/cities/:id
 async function getCity(req, res, next) {
   try {
     const city = await City.findByPk(req.params.id);
