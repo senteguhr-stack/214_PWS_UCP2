@@ -1,0 +1,31 @@
+{
+  "name": "iklim-api",
+  "version": "1.0.0",
+  "description": "SaaS API penyedia data cuaca & iklim kota-kota di Indonesia. Autentikasi ganda: JWT (dashboard developer) & API Key (akses data).",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed": "node seeders/run.js",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && node seeders/run.js"
+  },
+  "keywords": ["express", "sequelize", "postgresql", "saas", "api-key", "jwt"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "sequelize-cli": "^6.6.2"
+  }
+}
